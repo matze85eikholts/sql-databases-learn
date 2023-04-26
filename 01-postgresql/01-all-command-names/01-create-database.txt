@@ -1,0 +1,6 @@
+1-!!!do not forget semicolon !!!!;
+CREATE DATABASE words;
+2-connect to a database \c [database-name]
+3-create a table within a database
+CREATE TABLE sources (id INT PRIMARY KEY, name VARCHAR, description VARCHAR);
+4-to see all created tables \dt
