@@ -1,0 +1,30 @@
+postgres=# \c words
+Вы подключены к базе данных "words" как пользователь "postgres".
+words=# SELECT * FROM words;
+ОШИБКА:  отношение "words" не существует
+СТРОКА 1: SELECT * FROM words;
+                        ^
+words=# \dt
+           ╤яшёюъ юЄэю°хэшщ
+ ╤їхьр  |   ╚ь    |   ╥шя   | ┬ырфхыхЎ
+--------+---------+---------+----------
+ public | sources | ЄрсышЎр | postgres
+(1 ёЄЁюър)
+
+
+words=# SELECT * FROM sources
+words-# ;
+ id | name | description
+----+------+-------------
+(0 ёЄЁюъ)
+
+
+
+words=# INSERT INTO sources (id, name, description) VALUES(2,'test-word', 'I want to test the words again');
+INSERT 0 1
+words=# select * from sources
+words-# ;
+ id |   name    |          description
+----+-----------+--------------------------------
+  1 | test      | I want to test the words
+  2 | test-word | I want to test the words again
