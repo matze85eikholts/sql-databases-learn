@@ -1,0 +1,52 @@
+01 (4 X 10) 
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+SELECT * FROM book
+--------
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+SELECT title, amount FROM book
+--------------------------------
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+SELECT title AS название FROM book
+-----------------------------------------
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+SELECT price*amount AS total FROM book
+----------------------------------------------
+
+
+
+
+
+
+
