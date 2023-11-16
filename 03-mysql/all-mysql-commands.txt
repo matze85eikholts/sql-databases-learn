@@ -1,0 +1,201 @@
+01-CREATE DATABASE name_of_database;
+02-USE name_of_database;
+03-DROP DATABASE [IF EXISTS] name_of_database;
+04-CREATE TABLE table_name (
+	column_name1 datatype [column constraints],
+	column_name2 datatype [column constraints],
+	…
+	[table constraints],
+	[table constraints]
+);
+05-CHAR(size)
+06-VARCHAR(size)
+07-INT
+08-FLOAT(m, d)
+09-DOUBLE(m, d)
+10-DECIMAL(m, d)
+11-YEAR
+12-DATE
+13-TIME
+14-DATETIME	
+15-TIMESTAMP
+16-NOT NULL
+17-UNIQUE
+18-DEFAULT
+19-PRIMARY KEY
+20-AUTO_INCREMENT
+21-NOW()
+22-FOREIGN KEY(id) REFERENCES table_name(Id)
+23-ON DELETE CASCADE
+24-ON UPDATE RESTRICT
+25-ON DELETE SET NULL
+26-ON DELETE SET DEFAULT
+27-RENAME TABLE old_name TO new_name;
+28-ALTER TABLE table_name
+29-ADD CONSTRAINT [name of constraint] details_of_constraint 
+30-DROP INDEX name_of_constraint
+31-DROP FOREIGN KEY name_of_foreign_key
+32-MODIFY COLUMN column_name data_type [constraints]
+33-DROP COLUMN column_name
+34-ADD COLUMN column_name data_type [constraints]
+35-AFTER column_name
+36-DESCRIBE table_name;
+37-DROP TABLE [IF EXISTS] table_name;
+38-INSERT INTO table_name (column1, column2, column3, …) VALUES (value1, value2, value3, …);
+39-UPDATE table_name
+   SET column1 = value1, column2 = value2, …
+   WHERE condition;
+40-DELETE FROM table_name
+   WHERE condition;
+41-SELECT column_names_or_other_information
+   [AS alias]
+   [ORDER BY column(s)] [DESC]
+   FROM table_name
+   [WHERE condition];
+42-SELECT * FROM table_name;
+43-LIMIT
+44-DISTINCT
+45-WHERE ...IN 
+46-NOT IN
+47-AND
+48-OR
+49-CONCAT()
+50-SUBSTRING()
+51-CURDATE()
+52-CURTIME()
+53-COUNT()
+54-AVG()
+55-ROUND(number, n)
+56-MAX(x)
+57-MIN()
+58-SUM()
+59-GROUP BY
+60-ORDER BY
+61-HAVING
+62-JOIN
+63-INNER JOIN
+64-LEFT JOIN 
+65-RIGHT JOIN
+   SELECT [table_names.]columns_names_or_other_information
+   FROM left_table
+   JOIN / INNER JOIN / LEFT JOIN / RIGHT JOIN
+   right_table ON left_table.column_name = right_table.column_name;
+66-UNION
+   SELECT _statement_one
+   UNION
+   SELECT _statement_two;
+67-UNION ALL
+68-CREATE VIEW name_of_view AS
+   SELECT statement;
+69-ALTER VIEW name_of_view AS
+   SELECT statement;
+70-DROP VIEW [IF EXISTS] name_of_view;
+71-DELIMITER $$
+
+    CREATE TRIGGER name_of_trigger BEFORE/AFTER
+    UPDATE/DELETE/INSERT ON name_of_table FOR EACH ROW
+
+    BEGIN
+    -- Actions to take
+    END $$
+   DELIMITER ;
+72-CREATE TRIGGER
+73-DROP TRIGGER [IF EXISTS] name_of_trigger;
+74-SET @em_id = 1;
+75-CREATE PROCEDURE name_of_procedure([parameters, if any])
+76-CALL
+77-(IN a, OUT b)
+78-CREATE FUNCTION
+79-RETURN
+80-DETERMINISTIC
+81-MODIFIES SQL DATA
+82-DROP PROCEDURE [IF EXISTS] name_of_procedure;
+83-DROP FUNCTION [IF EXISTS] name_of_function;
+84-IF condition 1 is met THEN do task A;
+	ELSEIF condition 2 is met THEN do task B;
+	ELSEIF condition 3 is met THEN do task C;
+	…
+	ELSE do task Z;
+   END IF;
+85-CASE case_variable
+	WHEN value_1 THEN do task A;
+	WHEN value_2 THEN do task B;
+	...
+	ELSE do task Z;
+   END CASE;
+86-WHILE
+	[name of while statement : ] WHILE condition is true DO
+	-- some tasks
+	END WHILE;
+87-REPEAT
+88-UNTIL
+89-LOOP
+	[name of loop statement :] LOOP
+	-- some tasks
+	END LOOP;
+
+90-DECLARE cursor_name CURSOR FOR
+   SELECT statement
+91-DECLARE CONTINUE HANDLER FOR NOT FOUND SET variable_name = value;
+92-OPEN cursor_name;
+93-FETCH cursor_name INTO variable_names;
+94-CLOSE cursor_name;
+95-
+96-
+97-
+98-
+99-
+100-
+
+
+-----------------------------------------
+FOREIGN KEY(mentor_id) REFERENCES co_employees(id) ON DELETE
+CASCADE ON UPDATE RESTRICT,
+FOREIGN KEY(mentee_id) REFERENCES co_employees(id) ON DELETE
+CASCADE ON UPDATE RESTRICT
+-----------------------------------------------
+CREATE TABLE mentorships (
+	mentor_id INT NOT NULL,
+	mentee_id INT NOT NULL,
+	status VARCHAR(255) NOT NULL,
+	project VARCHAR(255) NOT NULL,
+
+	PRIMARY KEY (mentor_id, mentee_id, project),
+	CONSTRAINT fk1 FOREIGN KEY(mentor_id) REFERENCES
+	co_employees(id) ON DELETE CASCADE ON UPDATE RESTRICT,
+	CONSTRAINT fk2 FOREIGN KEY(mentee_id) REFERENCES
+	co_employees(id) ON DELETE CASCADE ON UPDATE RESTRICT,
+	CONSTRAINT mm_constraint UNIQUE(mentor_id, mentee_id)
+);
+-------------------------------------------------------
+ALTER TABLE employees
+	DROP COLUMN age,
+	ADD COLUMN salary FLOAT NOT NULL AFTER contact_number,
+	ADD COLUMN years_in_company INT NOT NULL AFTER salary;
+-------------------------------------------------------------
+SELECT em_name AS `Employee Name`, gender AS Gender FROM
+employees;
+----------------------------------------------------------
+SELECT gender, MAX(salary) FROM employees GROUP BY gender HAVING
+MAX(salary) > 10000;
+----------------------------------------------------------
+SELECT em_name, salary FROM employees WHERE gender = 'M'
+UNION
+SELECT em_name, years_in_company FROM employees WHERE gender = 'F';
+---------------------------------------------------------------
+DELIMITER $$
+CREATE TRIGGER update_ex_employees BEFORE DELETE ON employees FOR
+EACH ROW
+BEGIN
+INSERT INTO ex_employees (em_id, em_name, gender) VALUES
+(OLD.id, OLD.em_name, OLD.gender);
+END $$
+DELIMITER ;
+------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE name_of_procedure([parameters, if any])
+BEGIN
+-- SQL Statements
+END $$
+DELIMITER ;
+
